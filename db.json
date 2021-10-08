@@ -1,29 +1,19 @@
 {
-  "posts": [
+  "user": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "email": "bk",
+      "pass": "12"
     },
     {
       "id": 2,
-      "title": "json-server",
-      "author": "typicode"
+      "email": "json-server2",
+      "pass": "typicode"
     },
     {
       "id": 3,
-      "title": "json-server",
-      "author": "typicode"
+      "email": "json-server3",
+      "pass": "typicode"
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
