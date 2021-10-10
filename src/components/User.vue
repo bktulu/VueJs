@@ -66,16 +66,48 @@
             </div>
         </v-row>
         </div>
+        <ul>
+            <li v-for="data in guests" :key="data.id">{{data}}</li>
+        </ul>
         </v-app>
 </template>
 <script>
-
+const axios = require('axios');
+var guests = [];
 export default ({
     data(){
         return{
             id: this.$route.params.id,
             dialog: false,
+            guests:[]
+        }
+    },
+     mounted: function(){
+         guests = this.guests;
+        this.$nextTick(function(){
+            axios.get('http://localhost:3000/user?id='+this.id)
+          .then(function (response) {
+              
+              guests.push(response.data[0].guests);
+              console.log(guests);
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          })
+          .then(function () {
+            // always executed
+          });
+
+        })
+    },
+
+    methods:{
+        save(){
+            this.dialog = false;
+            
         }
     }
+
 })
 </script>
