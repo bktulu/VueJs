@@ -146,15 +146,19 @@ const axios = require('axios');
         }
       },
       dbControl(){
+        
         var inputFirstName = this.firstName;
         var inputLastName = this.lastName;
         var inputEmail = this.email;
         var inputPass = this.password;
+        var router = this.$router;
         if(this.isLoggin){
+          
           axios.get('http://localhost:3000/user?email='+inputEmail+'&password='+inputPass)
           .then(function (response) {
+            
             if (response.data.length >= 1) {
-              alert("Giriş başarılı");
+              router.push('/test');
             }else{
               alert("Email veya password yanlış");
             }

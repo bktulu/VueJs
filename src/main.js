@@ -10,7 +10,8 @@ Vue.component("Test-component", Test);
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes
+  routes:routes,
+  mode:'history' //url de çıkan # işaretinin olmaması için. Aslında default  hash tir.
 })
 
 new Vue({
