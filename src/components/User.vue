@@ -29,11 +29,13 @@
                     <v-col cols="12">
                         <v-text-field
                         label="First Name"
+                        v-model="tempGuest.firstName"
                         required
                         ></v-text-field>
                     </v-col>
                     <v-col cols="12">
                         <v-text-field
+                         v-model="tempGuest.lastName"
                         label="Last Name"
                         required
                         ></v-text-field>
@@ -66,30 +68,68 @@
             </div>
         </v-row>
         </div>
-        <ul>
-            <li v-for="data in guests" :key="data.id">{{data}}</li>
-        </ul>
+        
+        <v-simple-table>
+            <template v-slot:default>
+            <thead>
+                <tr>
+                <th class="text-left">
+                    İsim
+                </th>
+                <th class="text-left">
+                    Soy isim
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                v-for="data in guests"
+                :key="data.id"
+                >
+                <td>{{ data.firstName }}</td>
+                <td>{{ data.lastName }}</td>
+                </tr>
+            </tbody>
+            </template>
+        </v-simple-table>
+
         </v-app>
 </template>
 <script>
 const axios = require('axios');
-var guests = [];
+
 export default ({
     data(){
         return{
-            id: this.$route.params.id,
+            tempGuest:{
+                firstName:"",
+                lastName:"",
+            },
+            userId: this.$route.params.id, //
             dialog: false,
-            guests:[]
+            guests:[                    
+             ]
         }
     },
      mounted: function(){
-         guests = this.guests;
+         var self=this
         this.$nextTick(function(){
-            axios.get('http://localhost:3000/user?id='+this.id)
+            axios.get('http://localhost:3000/guests?userId='+this.userId)
           .then(function (response) {
-              
-              guests.push(response.data[0].guests);
-              console.log(guests);
+                 console.log(response.data);
+                 response.data.forEach(guest => {
+                         self.guests.push(guest)
+                 });
+                /*
+                foreach(var guest in response.data){
+                    //guest
+                }
+                */
+
+                //self.guests=response.data  -> diğer kullanım şekli. Ezdiğini unutma.
+                 console.dir(self.guests)
+          
+             
           })
           .catch(function (error) {
             // handle error
@@ -104,6 +144,22 @@ export default ({
 
     methods:{
         save(){
+            
+          var self=this
+          axios({
+            method: 'post',
+            url: 'http://localhost:3000/guests',
+            data: {
+              firstName: this.tempGuest.firstName,
+              lastName: this.tempGuest.lastName,            
+              userId: this.userId            
+            }
+          }).then((response)=>{
+                console.dir(response)
+                self.guests.push(response.data)
+
+          } )   
+
             this.dialog = false;
             
         }

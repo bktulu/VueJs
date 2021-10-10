@@ -11,3 +11,17 @@ export const routes = [
         component: User
     }
 ];
+
+
+/*
+
+ path: '/user/:id/:city'
+ xx.com/user/3/diyarbakir  xx.com/user?id=3&city=diyarbakir
+$route = xx.com/user/3/diyarbakir
+params=id,city
+id=3
+city=diyarbakir
+   id: this.$route.params.id, //
+
+
+*/ 
