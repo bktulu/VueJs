@@ -151,32 +151,13 @@ const axios = require('axios');
         var inputEmail = this.email;
         var inputPass = this.password;
         if(this.isLoggin){
-          axios.get('http://localhost:3000/user')
+          axios.get('http://localhost:3000/user?email='+inputEmail+'&password='+inputPass)
           .then(function (response) {
-            console.log(response);  
-            // let user = response.data;
-            // let email2 = Array.from(user, p => p.email);            
-            // for (let email of email2) {
-            //   if (email === inputEmail) {                
-            //     console.log(email2);
-            //   }
-            // }
-
-            // var item = user.email.filter(function(x){ 
-            //   return x.email=== inputEmail; 
-            // })[0];
-
-            // console.log(item);
-            // people.forEach(function(args){
-            //     if(args.email===inputEmail){
-            //       if (args.password === inputPass) {
-            //         console.log(args);
-            //       }else{
-            //         alert("Şifre Hatalı");
-            //       }                    
-            //     }
-
-            // });
+            if (response.data.length >= 1) {
+              alert("Giriş başarılı");
+            }else{
+              alert("Email veya password yanlış");
+            }
           })
           .catch(function (error) {
             // handle error
