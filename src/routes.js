@@ -7,7 +7,7 @@ export const routes = [
         component: Login
     },
     {
-        path: '/test', //hangi component gelirse hangi path çalışacak
+        path: '/test/:id', //hangi component gelirse hangi path çalışacak
         component: Test
     }
 ];

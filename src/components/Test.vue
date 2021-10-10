@@ -1,11 +1,12 @@
 <template>
-    <p>Test Ediyorum. {{buket}}</p>
+    <p>Test Ediyorum. {{id}} {{buket}}</p>
 </template>
 <script>
 
 export default ({
     data(){
         return{
+            id: this.$route.params.id,
             buket:"Buket"
         }
     }
