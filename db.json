@@ -5,35 +5,60 @@
       "firstname": "",
       "lastname": "",
       "email": "bk",
-      "password": "12"
+      "password": "12",
+      "guests": [
+        {
+          "id":1,
+          "guestFirstName":"buket",
+          "guestLastName":"ulu"
+        },
+        {
+          "id":2,
+          "guestFirstName":"hatice",
+          "guestLastName":"ulu"
+        }
+
+      ]
     },
     {
       "id": 2,
       "firstname": "",
       "lastname": "",
       "email": "bk2",
-      "password": "123"
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "password": "Password",
-      "id": 3
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "password": "Password",
-      "id": 4
+      "password": "123",
+      "guests": [
+        {
+          "id":1,
+          "guestFirstName":"buket",
+          "guestLastName":"ulu"
+        },
+        {
+          "id":2,
+          "guestFirstName":"hatice",
+          "guestLastName":"ulu"
+        }
+
+      ]
     },
     {
       "firstName": "a",
-      "lastName": "",
+      "lastName": "a",
       "email": "a",
       "password": "a",
-      "id": 5
+      "id": 3,
+      "guests": [
+        {
+          "id":1,
+          "guestFirstName":"buket",
+          "guestLastName":"ulu"
+        },
+        {
+          "id":2,
+          "guestFirstName":"hatice",
+          "guestLastName":"ulu"
+        }
+
+      ]
     }
   ]
 }
