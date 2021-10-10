@@ -88,7 +88,7 @@
             <!--<v-btn v-else type="submit">{{register}}</v-btn>-->
             <v-spacer></v-spacer>
             
-            <v-btn color="orange" text @click="isLoggin = !isLoggin">{{isLoggin == true ? register : signIN}}</v-btn>
+            <v-btn color="orange" text @click="changePage">{{isLoggin == true ? register : signIN}}</v-btn>
           </v-card-actions>
         </v-card>        
       </v-col>
@@ -146,19 +146,37 @@ const axios = require('axios');
         }
       },
       dbControl(){
+        var inputFirstName = this.firstName;
+        var inputLastName = this.lastName;
         var inputEmail = this.email;
         var inputPass = this.password;
-        axios.get('http://localhost:3000/user')
-          .then(function (response) {            
-            for(var k in response.data) {              
-              if (response.data[k].email == inputEmail && response.data[k].pass == inputPass) {                
-                alert("basarili");
-                break;
-              }else{
-                alert("hatali");
-                break;
-              }
-            }
+        if(this.isLoggin){
+          axios.get('http://localhost:3000/user')
+          .then(function (response) {
+            console.log(response);  
+            // let user = response.data;
+            // let email2 = Array.from(user, p => p.email);            
+            // for (let email of email2) {
+            //   if (email === inputEmail) {                
+            //     console.log(email2);
+            //   }
+            // }
+
+            // var item = user.email.filter(function(x){ 
+            //   return x.email=== inputEmail; 
+            // })[0];
+
+            // console.log(item);
+            // people.forEach(function(args){
+            //     if(args.email===inputEmail){
+            //       if (args.password === inputPass) {
+            //         console.log(args);
+            //       }else{
+            //         alert("Şifre Hatalı");
+            //       }                    
+            //     }
+
+            // });
           })
           .catch(function (error) {
             // handle error
@@ -167,6 +185,22 @@ const axios = require('axios');
           .then(function () {
             // always executed
           });
+        }else{
+          this.isLoggin = !this.isLoggin;
+          axios({
+            method: 'post',
+            url: 'http://localhost:3000/user',
+            data: {
+              firstName: inputFirstName,
+              lastName: inputLastName,
+              email: inputEmail,
+              password: inputPass            
+            }
+          });
+        }        
+      },
+      changePage(){
+        this.isLoggin = !this.isLoggin;
       }
     }
   }
