@@ -79,6 +79,9 @@
                 <th class="text-left">
                     Soy isim
                 </th>
+                <th class="text-left">
+                    Düzenle/Sil
+                </th>
                 </tr>
             </thead>
             <tbody>
@@ -88,10 +91,24 @@
                 >
                 <td>{{ data.firstName }}</td>
                 <td>{{ data.lastName }}</td>
+                <td><v-icon
+        small
+        class="mr-2"
+        @click="editItem(data.id,data.firstName,data.lastName)"
+      >
+        mdi-pencil
+      </v-icon>
+      <v-icon
+        small
+        @click="deleteItem(item)"
+      >
+        mdi-delete
+      </v-icon></td>
                 </tr>
             </tbody>
             </template>
         </v-simple-table>
+        
 
         </v-app>
 </template>
@@ -162,6 +179,13 @@ export default ({
 
             this.dialog = false;
             
+        },
+        editItem(){
+            
+        },
+
+        deleteItem(){
+
         }
     }
 
