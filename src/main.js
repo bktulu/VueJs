@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import Test from './components/Test.vue'
+import User from './components/User.vue'
 import VueRouter from 'vue-router'
 import {routes} from './routes'
 
 Vue.config.productionTip = false
-Vue.component("Test-component", Test);
+Vue.component("User-component", User);
 Vue.use(VueRouter);
 
 const router = new VueRouter({

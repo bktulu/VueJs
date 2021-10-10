@@ -1,5 +1,5 @@
 import Login from './components/Login'
-import Test from './components/Test'
+import User from './components/User'
 
 export const routes = [
     {
@@ -7,7 +7,7 @@ export const routes = [
         component: Login
     },
     {
-        path: '/test/:id', //hangi component gelirse hangi path çalışacak
-        component: Test
+        path: '/user/:id', //hangi component gelirse hangi path çalışacak
+        component: User
     }
 ];

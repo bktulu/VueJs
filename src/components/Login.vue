@@ -159,7 +159,7 @@ const axios = require('axios');
             
             if (response.data.length >= 1) {
               console.log(response.data[0].id)
-              router.push('/test/'+response.data[0].id);
+              router.push('/user/'+response.data[0].id);
             }else{
               alert("Email veya password yanlış");
             }
